@@ -11,7 +11,7 @@
 
 var joinRoom = function (roomName, callback) {
 	var apiUrl = '/api/get-room/';
-	if (baseUrl) {
+	if (baseUrl !== 'undefined') {
 		// todo - to support PHP app api url
 		apiUrl = baseUrl + apiUrl;
 	}

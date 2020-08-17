@@ -93,7 +93,7 @@ document.getElementById('create_room').addEventListener('click', function (event
 
 var createRoom = function (callback) {
 	var apiUrl = '/api/create-room/';
-	if (baseUrl) {
+	if (baseUrl !== 'undefined') {
 		// todo - to support PHP app api url
 		apiUrl = baseUrl + apiUrl;
 	}
@@ -119,7 +119,7 @@ var createRoom = function (callback) {
 
 var createToken = function (details, callback) {
 	var apiUrl = '/api/create-token/';
-	if (baseUrl) {
+	if (baseUrl !== 'undefined') {
 		// todo - to support PHP app api url
 		apiUrl = baseUrl + apiUrl;
 	}

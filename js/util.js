@@ -10,7 +10,7 @@
 
 var createToken = function (details, callback) {
 	var apiUrl = '/api/create-token/';
-	if (baseUrl) {
+	if (baseUrl !== 'undefined') {
 		// todo - to support PHP app api url
 		apiUrl = baseUrl + apiUrl;
 	}
