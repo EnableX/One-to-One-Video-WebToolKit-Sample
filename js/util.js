@@ -28,7 +28,7 @@ var createToken = function (details, callback) {
             }
         }
     };
-    xhttp.open("POST", "/createToken/", true);
+    xhttp.open("POST", "/api/create-token/", true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(details));
 };

@@ -106,7 +106,7 @@ var createRoom = function (callback) {
             }
         }
     };
-    xhttp.open("POST", "/createRoom/", true);
+    xhttp.open("POST", "/api/create-room/", true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
     xhttp.send();
@@ -126,7 +126,7 @@ var createToken = function (details, callback) {
             }
         }
     };
-    xhttp.open("POST", "/createToken/", true);
+    xhttp.open("POST", "/api/create-token/", true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(details));
 };
