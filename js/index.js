@@ -92,6 +92,11 @@ document.getElementById('create_room').addEventListener('click', function (event
 // create room api call using XML request
 
 var createRoom = function (callback) {
+	var apiUrl = '/api/create-room/';
+	if (baseUrl) {
+		// todo - to support PHP app api url
+		apiUrl = baseUrl + apiUrl;
+	}
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -106,13 +111,18 @@ var createRoom = function (callback) {
             }
         }
     };
-    xhttp.open("POST", "/api/create-room/", true);
+    xhttp.open("POST", apiUrl, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.setRequestHeader ("Authorization", "Basic " + btoa(username + ":" + password));
     xhttp.send();
 };
 
 var createToken = function (details, callback) {
+	var apiUrl = '/api/create-token/';
+	if (baseUrl) {
+		// todo - to support PHP app api url
+		apiUrl = baseUrl + apiUrl;
+	}
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -126,7 +136,7 @@ var createToken = function (details, callback) {
             }
         }
     };
-    xhttp.open("POST", "/api/create-token/", true);
+    xhttp.open("POST", apiUrl, true);
     xhttp.setRequestHeader('Content-Type', 'application/json');
     xhttp.send(JSON.stringify(details));
 };
