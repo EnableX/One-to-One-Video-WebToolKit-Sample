@@ -298,9 +298,10 @@
                         }
                     }
                     var clientId = event.message.clientId;
+                    var stream_id = event.message.streamId;
                     if (presentationStarted == false && desktop_shared == false) {
                         if (shareStream == null) {
-                            var st = room.remoteStreams.get(11);
+                            var st = room.remoteStreams.get(stream_id);
                             if (st.stream !== undefined) {
                                 presentationStarted = true;
                                 shareStart = true;
