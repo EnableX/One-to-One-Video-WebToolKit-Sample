@@ -60,7 +60,7 @@ Linux/Mac :
 
       $ sudo openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 
-Windows( use GitBash ):
+Windows( use Git Bash ):
 
       $ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 
