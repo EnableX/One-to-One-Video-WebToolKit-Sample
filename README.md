@@ -8,9 +8,9 @@ User application requires `two` components to initiate and perform real-time com
 
 This github sample project will enable you to create a `Client Application` for a very simple real time video communication application using EnableX Web SDK.
 
-You also need to setup an `Application Server`. Clone this Repository `git clone https://github.com/EnableX/video-api-app-server-nodejs.git --recursive` & follow the steps further for setting up `Application Server`.
+You also need to setup an `Application Server`. 
 
-Alternatively, you can clone repository `git clone https://github.com/EnableX/One-to-One-Video-Chat-Sample-Web-Application.git --recursive` if you want to have both `Application Server` and `Client Application` in a single repository.
+You can clone repository `git clone https://github.com/EnableX/One-to-One-Video-Chat-Sample-Web-Application.git --recursive` if you want to have both `Application Server` and `Client Application` in a single repository.
 
 ---
 ## Requirements
@@ -48,13 +48,19 @@ If the installation was successful, you should be able to run the following comm
 ### Setup EnableX video calling application
 
       $ npm install -g http-server
-      $ git clone https://github.com/EnableX/webtoolkit-video-implementation.git
-      $ cd webtoolkit-video-implementation
+      $ git clone https://github.com/EnableX/One-to-One-Video-WebToolKit-Sample.git
+      $ cd One-to-One-Video-WebToolKit-Sample
 
 ### TLS/SSL
 - The Client Application serving Web Client Pages needs to run on https. You will require a valid SSL Certificate for your Application Server domain to connect to EnableX platform.
 
 - First, you need to make sure that openssl is installed correctly, and you have `key.pem` and `cert.pem` files. You can generate them using this command:
+
+Linux/Mac :
+
+      $ sudo openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+
+Windows( use GitBash ):
 
       $ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 
@@ -64,7 +70,7 @@ If the installation was successful, you should be able to run the following comm
 
 Update Your Application server URL to following file -
 
-- Open `js/index.js`, `js/room.js` & `js/utl.js` file and set the value of `apiUrl`
+- Open `js/index.js`, `js/room.js` & `js/util.js` file and set the value of `apiUrl`
 
 
 ## Running the project
