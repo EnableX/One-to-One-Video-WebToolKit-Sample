@@ -1,135 +1,80 @@
-# One to One Video Calling Application in JavaScript using EnableX Toolkit for Web 
+# Real time video communication application (One to One) using EnableX platform (Only Client End Application)
 
-This is a sample one to one video calling client application written in JavaScript that allows developers to implement video calling capabilities in their websites. The application runs on the web browsers (referred as client end point) and utilizes EnableX Web SDK to conduct an RTC session with its peers through EnableX Video Services. 
+User application requires `two` components to initiate and perform real-time communications hosted on `EnableX platform`.
+- An `Application Server` running as a Web Service which uses EnableX Video Server API to create token for hosted RTC Applications.
+- `Client Application` running on Client End Points (Web browser, native clients like Android & iOS etc.) which uses EnableX Client Toolkits / SDKs to establish a RTC session with EnableX Platform.
 
-The client application performs the following tasks to facilitate an RTC session: 
+![EnableX Architecture](https://developer.enablex.io/wp-content/uploads/2019/08/app-architecture.png)
 
-* Get token from the application server 
-* Connect to the room using the token 
-* Publish audio/video streams in the room 
-* Subscribe to remote audio/video streams in the room 
-* Listen to any session related events
+This github sample project will enable you to create a `Client Application` for a very simple real time video communication application using EnableX Web SDK.
 
-This sample client application also demonstrates the following features:
+You also need to setup an `Application Server`. 
 
-* Mute/Unmute video 
-* Mute/Unmute audio 
-* Session Recording 
-* Chat 
-* Screen share 
-* Disconnect
+You can clone repository `git clone https://github.com/EnableX/One-to-One-Video-Chat-Sample-Web-Application.git --recursive` if you want to have both `Application Server` and `Client Application` in a single repository.
 
+---
+## Requirements
 
+For development, you will only need Node.js and a node global package, npm, installed in your environement.
 
-## 1 Get Started
+### Node
+- #### Node installation on Windows
 
-### 1.1 Pre-Requisites
+  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-#### 1.1.1 App Id and App Key
+- #### Node installation on Ubuntu
 
-* Create a free account on EnableX  [https://portal.enablex.io/cpaas/trial-sign-up/] 
-* Create your Project
-* Get the App ID and App Key generated against the Project
+  You can install nodejs and npm easily with apt install, just run the following commands.
 
+      $ sudo apt install nodejs
+      $ sudo apt install npm
 
-#### 1.1.2 Requirement
+- #### Other Operating Systems
+  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-* Check your browser compatibility with EnableX [https://developer.enablex.io/video/browser-compatibility-of-enablex-video/]
-* Download latest copy of Web SDK (EnxRtc.js) [https://developer.enablex.io/wp-content/uploads/EnxRtc.js.v1.9.3.zip?ver=1.9.3] and replace client/js/EnxRtc.js 
-* Install all project modules. Run `npm install` 
+If the installation was successful, you should be able to run the following command.
 
+    $ node --version
+    v12.17.0
 
-#### 1.1.3 SSL Certificate 
+    $ npm --version
+    6.14.4
 
-Use a valid SSL Certificate for your Domain and use it to configure your Web Service to make your domain accessible on HTTPS. 
+---
 
+## Setup
 
-#### 1.1.4 Sample Application Server
+### Setup EnableX video calling application
 
-While this GitHub repository provides sample client code, you require an application server to provision video room on EnableX server. Use any of the Repository listed below to setup your application server: 
+      $ npm install -g http-server
+      $ git clone https://github.com/EnableX/One-to-One-Video-WebToolKit-Sample.git
+      $ cd One-to-One-Video-WebToolKit-Sample
 
-* Laravel [https://github.com/EnableX/WebRTC-Open-Source-One-To-One-Video-Chat-Application-in-Laravel]
-* PHP     [https://github.com/EnableX/One-to-One-Video-Calling-Open-Source-PHP-Application]
-* Nodejs  [https://github.com/EnableX/One-to-One-Video-Chat-Sample-Web-Application]
-* Python  [https://github.com/EnableX/WebRTC-Python-Open-Source-Application-for-1-to-1-video-chat]
-* C#  [https://github.com/EnableX/One-to-One-Video-Calling-C-Sharp-Application]
-  
-Clone or download repository of your choice and configure the server as per the instructions given in the respective README document.  
+### TLS/SSL
+- The Client Application serving Web Client Pages needs to run on https. You will require a valid SSL Certificate for your Application Server domain to connect to EnableX platform.
 
-To directly try the sample code without having to configure an application server, you can also use the EnableX test server as explained in section 2. However, it is recommended to configure your own application server to build a video calling web app. 
+- First, you need to make sure that openssl is installed correctly, and you have `key.pem` and `cert.pem` files. You can generate them using this command:
 
+Linux/Mac :
 
-### 1.2 Build Application  
+      $ sudo openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 
-Run `npm start` 
+Windows( use Git Bash ):
 
+      $ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 
-### 1.2 Test 
+- This generates a cert-key pair.
 
-* Open the web browser and go to https://your-domain-name/path/client to load the application.  
-* If you don't have a Room ID, then create by clicking on the “Create Room” button. The Room ID will get prefilled in the form. 
-* Save the Room ID and share it with others along with the URL to join the Same Room.  
-* Enter your Name and choose your role, either as a Moderator or a Participant 
-* Allow access to the microphone when prompted. 
-* You are now in a video call with others, who have joined the same room. 
+## Configure app
 
-Note: This sample application creates a virtual room with limited Participants and 1 Moderator for demonstration purposes. 
+Update Your Application server URL to following file -
+
+- Open `js/index.js`, `js/room.js` & `js/util.js` file and set the value of `apiUrl`
 
 
+## Running the project
 
-## 2 Testing Environment
+- You need to run the server with -S for enabling SSL and -C for your certificate file.
 
-As mentioned in section 1.1.4 above, you have an option to run your client application on **EnableX pre-configured environment** [https://try.enablex.io/] instead of setting up your own application server.  
-
-This allows you to quickly test the performance of EnableX audio calls before getting into the development of your application.  
-
-As the EnableX test server has been configured for demonstration purpose only, it only allows to: 
-
-* Conduct a single session with a duration lesser than 10 minutes. 
-* Host a multiparty call with less than 3 participants. 
-
-Refer to the **Demo App Server** [https://developer.enablex.io/video/sample-code/#demo-app-server] for more information.   
-
-Once you have successfully tested your application on the test server, you can set up your application server as explained in section 1.1.4 above. 
-
-
-
-## 3 Learn more about Client API
-
-The client APIs are called from the EnableX Web SDK (EnxRtc.js) which runs on the client browser. The client APIs are used to communicate with the EnableX video services and monitor the client-side state of the RTC session.  
-
-The client APIs are typically used to: 
-
-* Connect to the desired room using the token received from the application server 
-* Manage local audio and video 
-* Handle room and stream related events initiated by the user 
-
-The client APIs handle four major entities: 
-
-* **EnableX Room:** It handles room/session related events like connection, local stream publication, and remote stream subscription. 
-* **EnableX Stream:** It identifies audio/video/data stream published by the user. 
-* **Events:** It represents the events related to the room and the stream. 
-* **Player:** It represents the customizable UI element used to render the audio/video stream in the DOM. 
-
-In addition to the features demonstrated in this sample program, the SDK has many helpful APIs available for the developers to utilize like: 
-
-* File sharing 
-* Streaming 
-* Annotation 
-* Canvas 
-
-And many more such exciting features. 
-
-Read **Web Toolkit Documentation** [https://www.enablex.io/developer/video-api/client-api/web-toolkit/]  for more details.  
-
-**Download Web Toolkit** [https://www.enablex.io/developer/video/downloads/] to get the latest version of Web SDK. 
-
-
-
-## 4 Support
-
-EnableX provides a library of Documentations, How-to Guides, and Sample Codes to help software developers, interested in embedding RTC in their applications. 
-
-Refer to the **Complete Developer’s Guide** [https://developer.enablex.io/] for more details. 
-
-You may also write to us for additional support at support@enablex.io. 
+    $ http-server -S -C cert.pem
