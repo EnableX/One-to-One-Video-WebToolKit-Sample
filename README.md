@@ -8,7 +8,7 @@ User application requires `two` components to initiate and perform real-time com
 
 This github sample project will enable you to create a `Client Application` for a very simple real time video communication application using EnableX Web SDK.
 
-You also need to setup an `Application Server`. 
+You also need to setup an `Application Server`.  Clone this Repository `git clone https://github.com/EnableX/video-api-app-server-nodejs.git --recursive` & follow the steps further for setting up `Application Server`.
 
 You can clone repository `git clone https://github.com/EnableX/One-to-One-Video-Chat-Sample-Web-Application.git --recursive` if you want to have both `Application Server` and `Client Application` in a single repository.
 
