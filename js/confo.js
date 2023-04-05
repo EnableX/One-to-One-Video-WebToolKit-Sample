@@ -178,7 +178,7 @@
         EnxRtc.Logger.setLogLevel(5);
         localStream = EnxRtc.joinRoom(token, config, function (success, error) {
             // if room connection has some error
-            if(error && error == null)
+            if(error && error != null)
             {
                 $(".error_div").html(
                     "Room connection error."+ error.message
