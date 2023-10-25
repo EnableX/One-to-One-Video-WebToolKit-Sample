@@ -1,10 +1,12 @@
 # 1-to-1 Real-Time Video Communication App with EnableX: Client-End Application Guide
 
-User application requires `two` components to initiate and perform real-time communications hosted on `EnableX platform`.
-- An `Application Server` running as a Web Service which uses EnableX Video Server API to create token for hosted RTC Applications.
-- `Client Application` running on Client End Points (Web browser, native clients like Android & iOS etc.) which uses EnableX Client Toolkits / SDKs to establish a RTC session with EnableX Platform.
+Real-time 1-to-1 video communication application using EnableX platform (Client-Side Only)
 
-![EnableX Architecture](https://developer.enablex.io/wp-content/uploads/2019/08/app-architecture.png)
+This user application relies on two essential components for enabling real-time communications via the EnableX platform:
+
+1. An Application Server functioning as a Web Service, which leverages the EnableX Video Video API to generate tokens for RTC applications hosted on the platform.
+
+2. A Client Application deployed on client endpoints, such as web browsers or native clients like Android and iOS, which utilizes EnableX Client Toolkits/SDKs to establish real-time communication sessions with the EnableX Platform..
 
 This github sample project will enable you to create a `Client Application` for a very simple real time video communication application using EnableX Web SDK.
 
