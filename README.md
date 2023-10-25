@@ -1,4 +1,4 @@
-# Real time video communication application (One to One) using EnableX platform (Only Client End Application)
+# 1-to-1 Real-Time Video Communication App with EnableX: Client-End Application Guide
 
 User application requires `two` components to initiate and perform real-time communications hosted on `EnableX platform`.
 - An `Application Server` running as a Web Service which uses EnableX Video Server API to create token for hosted RTC Applications.
